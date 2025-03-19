@@ -86,7 +86,7 @@ where
     NI: NodeIndex,
 {
     /// The location of this allocation within the buffer.
-    pub offset: NI,
+    pub offset: u32,
     /// The node index associated with this allocation.
     metadata: NI::NonMax,
 }
@@ -299,7 +299,7 @@ where
 
         let node = &mut self.nodes[node_index.to_usize()];
         Some(Allocation {
-            offset: NI::from_u32(node.data_offset),
+            offset: node.data_offset,
             metadata: node_index,
         })
     }
